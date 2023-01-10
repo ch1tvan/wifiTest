@@ -1,3 +1,6 @@
+// Library Inclusions
+#include <WiFi.h>
+
 //    Communication Definitions
 #define IPServer "192.168.1.80"
 #define UDP_PORT 7394
@@ -9,11 +12,28 @@ WiFiUDP _udp;
 
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(115200);
 
+  // Setup WiFi mode
+  WiFi.mode(WIFI_STA);
+  delay(100);
+
+  Serial.println("Setup Done");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  static int prevMS = 0;
+  int currMS = millis()%1000;
+  if(prevMS > currMS) {
+    if(WiFi.status() != WL_CONNECTED) {
+      scan4Wifi();
+    }
+    else {
+      Serial.print("Wifi local IP is ");
+      Serial.println(WiFi.localIP());
+      delay(2000);
+    }
+  }
+  prevMS = currMS;
 
 }
-
