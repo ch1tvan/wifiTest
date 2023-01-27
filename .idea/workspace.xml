@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78337016-757f-4ae8-963e-86f727cce6d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wifiFunctions.ino" beforeDir="false" afterPath="$PROJECT_DIR$/wifiFunctions.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wifiTest.ino" beforeDir="false" afterPath="$PROJECT_DIR$/wifiTest.ino" afterDir="false" />
-    </list>
+    <list default="true" id="78337016-757f-4ae8-963e-86f727cce6d4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +36,7 @@
       <updated>1670313907165</updated>
       <workItem from="1670313908729" duration="8000" />
       <workItem from="1673368983096" duration="633000" />
+      <workItem from="1673453261884" duration="10000" />
     </task>
     <servers />
   </component>

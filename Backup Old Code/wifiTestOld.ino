@@ -2,7 +2,7 @@
 #include <WiFi.h>
 
 //    Communication Definitions
-#define IPServer "192.168.1.150"
+#define IPServer "192.168.1.102"
 #define UDP_PORT 7394
 #define NW_NAME "FCI_No_Internet_2.4"
 // #define NW_NAME "FCI_No_Internet_NotExist"
@@ -11,8 +11,7 @@
 // Variables used in communication
 WiFiUDP _udp;
 char packetBuffer[255];
-int wifiConnectionTime = 2000, prevMS = 0;
-bool wifiCon = false;
+char replyBuffer[255];
 
 void setup() {
   // put your setup code here, to run once:
@@ -26,18 +25,22 @@ void setup() {
 }
 
 void loop() {
-  int currMS = millis() % wifiConnectionTime;
+  static int prevMS = 0;
+  int currMS = millis()%5000;
   if(WiFi.status() == WL_CONNECTED) {
     Serial.print("Wifi local IP is ");
     Serial.println(WiFi.localIP());
-    if(UDP_handshake()) {
+    if(UDP_handshake(UDP_PORT)) {
       readFromUDP();
-      // send2UDP();
+      char replyPrefix [] = "Received: \0";
+      strcpy(replyBuffer, replyPrefix);
+      Serial.println(replyBuffer);
+      strncat(replyBuffer,packetBuffer,255-strlen(replyPrefix));
+      Serial.println(replyBuffer);
     }
-    delay(500);
+    delay(1000);
   }
   else if(prevMS>currMS) {
-    wifiCon = false;
     scan4Wifi();
     // connect2Network();
   }
